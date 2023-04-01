@@ -4,45 +4,70 @@ import A1
 import A2
 
 import Data.List (transpose)
+--import Data.Monoid (All(getAll))
 
 -- *** Assignment 3-1 ***
 
 -- Q#01
+showInts :: [Int] -> [String]
+showInts [] = []
+showInts xs = map show xs
 
-showInts = undefined
 
-
-_HEADER_ = undefined
+_HEADER_ = formatLine $ showInts _RANGE_
 
 -- Q#02
 
-showSquares = undefined
+showSquares :: [Player] -> [String]
+showSquares [] = []
+showSquares (x:xs) = show x : showSquares xs
 
 
 -- Q#03
-
-formatRows = undefined
+formatRows :: Board -> [String]
+formatRows b = let b' = map showSquares b
+                in map formatLine b'
 
 -- Q#04
 
-isColEmpty = undefined
+isColEmpty :: Row -> Int -> Bool
+isColEmpty [] _ = False
+isColEmpty r i 
+    | elem i _RANGE_ = r !! i == Empty 
+    | otherwise = False
 
 -- Q#05
 
-dropFirstCol = undefined
+dropFirstCol :: Board -> Board
+dropFirstCol [[]] = [[]]
+dropFirstCol b = map tail b
 
-
-dropLastCol = undefined
+dropLastCol :: Board -> Board
+dropLastCol [[]] = [[]]
+dropLastCol b = map init b
 
 -- Q#06
 
-getDiag1 = undefined
+getDiag1 :: Board -> Line
+getDiag1 [[]] = []
+getDiag1 b = go b 0 
+                where go [] _ = []
+                      go (b':bs') i = b' !! i : go bs' (i + 1) 
 
 
-getDiag2 = undefined
+getDiag2 :: Board -> Line
+getDiag2 [[]] = []
+getDiag2 b = go b (_SIZE_ - 1)
+                where go [] _ = []
+                      go (b':bs') i = b' !! i : go bs' (i - 1)
 
 
-getAllLines = undefined
+getAllLines :: Board -> Board
+getAllLines b = let t = transpose b
+                    d1 = getDiag1 b
+                    d2 = getDiag2 b
+                    in b ++ t ++ [d1] ++ [d2]
+
 
 -- *** Assignment 3-2 ***
 
