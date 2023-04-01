@@ -85,7 +85,11 @@ switchPlayer Empty = Empty
 
 
 -- Q#12
+-- better solution?
 showSquare :: Square -> String
-showSquare s = case s of X -> "X"
-                         O -> "O"
-                         Empty -> "_"
+showSquare = show
+
+showSquare' :: Square -> String
+showSquare' s = case s of X -> "X"
+                          O -> "O"
+                          Empty -> "_"
