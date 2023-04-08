@@ -68,6 +68,11 @@ _O_WIN_ = [ [O, X, O]
           , [X, O, O]
           ]
 
+_X_WIN2_ = [ [O, X, O]
+          , [Empty, X, Empty]
+          , [O, X, Empty]
+          ]
+
 hasWon :: Player -> Board -> Bool
 hasWon _ [] = False
 hasWon p b = let allLines = getAllLines b
