@@ -19,7 +19,7 @@ showInts' [] = []
 showInts' xs = map show xs
 
 
-_HEADER_ = formatLine $ showInts _RANGE_
+_HEADER_ = " " ++ (formatLine $ showInts _RANGE_)
 
 -- Q#02
 
@@ -49,11 +49,21 @@ isColEmpty r i
 
 dropFirstCol :: Board -> Board
 dropFirstCol [[]] = [[]]
-dropFirstCol b = map tail b
+dropFirstCol [] = []
+dropFirstCol (x:xs) = tail x : dropFirstCol xs
 
 dropLastCol :: Board -> Board
 dropLastCol [[]] = [[]]
-dropLastCol b = map init b
+dropLastCol [] = []
+dropLastCol (x:xs) = init x : dropLastCol xs
+
+dropFirstCol' :: Board -> Board
+dropFirstCol' [[]] = [[]]
+dropFirstCol' b = map tail b
+
+dropLastCol' :: Board -> Board
+dropLastCol' [[]] = [[]]
+dropLastCol' b = map init b
 
 -- Q#06
 
