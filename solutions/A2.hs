@@ -79,6 +79,7 @@ stringToMove s
     | otherwise = _INVALID_MOVE_
 -- Q#10
 
+{-}
 replaceSquareInRow :: Player -> Int -> Row -> Row
 replaceSquareInRow p c r = case p of X -> rsX c r 
                                             where
@@ -87,14 +88,29 @@ replaceSquareInRow p c r = case p of X -> rsX c r
                                                  | c' < 0 || c' > (_SIZE_ - 1) = r'
                                                  | otherwise = let (s1, s2) = splitAt c' r
                                                                 in  s1 ++ [p] ++ tail s2 
-                                     O -> rsO c r
+                                      O -> rsO c r
                                             where 
                                                 rsO _ [] = []
                                                 rsO c' r' 
                                                  | c' < 0 || c' > (_SIZE_ - 1) = r'
                                                  | otherwise = let (s1, s2) = splitAt c' r
                                                                 in  s1 ++ [p] ++ tail s2 
-                                     Empty -> r -- not sure if an Empty Player would require row to be updated?
+                                      Empty -> r -- not sure if an Empty Player would require row to be updated?
+-}
+
+replaceSquareInRow :: Player -> Int -> Row -> Row
+replaceSquareInRow _ _ [] = []
+replaceSquareInRow Empty _ r = r
+replaceSquareInRow p c r 
+        | c < 0 || c > (_SIZE_ - 1) = r
+        | otherwise = let (s1, s2) = splitAt c r
+                         in  s1 ++ [p] ++ tail s2
+
+rsX :: Int -> Row -> Row
+rsX = replaceSquareInRow X
+
+rsO :: Int -> Row -> Row
+rsO = replaceSquareInRow O
 
 e = head _EMPTY_BOARD_
 t = last _TIED_BOARD_
