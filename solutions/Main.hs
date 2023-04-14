@@ -6,8 +6,6 @@ import A3
 import A4
 import A5
 
-import Data.Char
-
 main :: IO ()
 main = do 
           p <- firstPlayer
