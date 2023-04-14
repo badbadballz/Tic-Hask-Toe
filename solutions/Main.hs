@@ -11,7 +11,7 @@ import Data.Char
 main :: IO ()
 main = do 
           p <- firstPlayer
-          play _EMPTY_BOARD_ p
+          playDo _EMPTY_BOARD_ p
     
     
 --putStrLn "Welcome to Part I of EMURGO Academy's Haskell course!"
