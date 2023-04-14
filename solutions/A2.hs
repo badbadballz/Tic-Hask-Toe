@@ -71,10 +71,14 @@ isMoveInBounds :: Move -> Bool
 isMoveInBounds (r, c) = elem r _RANGE_ && elem c _RANGE_
 
 -- Q#09
+stringToMove :: String -> Move
+stringToMove [a, b] = (convertRowIndex a, readDigit b)
+stringToMove _ = _INVALID_MOVE_
+
 {- this only works for string of exactly 2 characters long, so for otherwise legal moves like A11 
 then it would still return an invalid move -}
-stringToMove :: String -> Move
-stringToMove s 
+stringToMove' :: String -> Move
+stringToMove' s 
     | length s == 2 = (convertRowIndex $ head s , readDigit $ last s)
     | otherwise = _INVALID_MOVE_
 -- Q#10
