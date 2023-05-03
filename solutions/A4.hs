@@ -11,7 +11,7 @@ import A3 hiding (
   isWinningLine,
   prependRowIndices
   )
-import Text.Printf (PrintfArg(formatArg))
+--import Text.Printf (PrintfArg(formatArg))
 
 -- *** Assignment 4-1 *** --
 

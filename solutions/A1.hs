@@ -1,9 +1,9 @@
 module A1 where
 
 import Data.Char (toUpper)
-import GHC.IO.Encoding (getFileSystemEncoding)
-import Data.Monoid (First(getFirst))
-import GHC.RTS.Flags (TickyFlags(showTickyStats))
+--import GHC.IO.Encoding (getFileSystemEncoding)
+--import Data.Monoid (First(getFirst))
+--import GHC.RTS.Flags (TickyFlags(showTickyStats))
 
 -- *** Assignment 1-1 *** --
 
